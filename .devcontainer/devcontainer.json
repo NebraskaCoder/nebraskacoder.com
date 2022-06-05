@@ -42,7 +42,8 @@
         "zignd.html-css-class-completion",
         "bradlc.vscode-tailwindcss",
         "austenc.tailwind-docs",
-        "mongodb.mongodb-vscode"
+        "mongodb.mongodb-vscode",
+        "orta.vscode-jest"
       ]
     }
   },
