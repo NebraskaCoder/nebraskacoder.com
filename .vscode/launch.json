@@ -16,7 +16,7 @@
       "name": "Storybook Full Stack",
       "type": "node-terminal",
       "request": "launch",
-      "command": "npm run storybook",
+      "command": "npm run storybook:noweb",
       "serverReadyAction": {
         "pattern": "Local: .+(https?://.+)/",
         "uriFormat": "%s",
