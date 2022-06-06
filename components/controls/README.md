@@ -1,3 +1,3 @@
 # NebraskaCoder Controls
 
-Basic controls with standardized styles and formatting.
+Common controls with standardized styles and formatting.
