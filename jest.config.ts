@@ -1,3 +1,10 @@
+const nextJest = require("next/jest");
+
+const createJestConfig = nextJest({
+  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  dir: "./",
+});
+
 /*
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
@@ -32,10 +39,10 @@ const jestConfig = {
   // coverageDirectory: undefined,
 
   // An array of regexp pattern strings used to skip coverage collection
-  coveragePathIgnorePatterns: ["/node_modules/"],
+  // coveragePathIgnorePatterns: ["/node_modules/"],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "v8",
+  // coverageProvider: "babel",
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -75,7 +82,7 @@ const jestConfig = {
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  moduleDirectories: ["node_modules"],
+  // moduleDirectories: ["node_modules", "."],
 
   // An array of file extensions your modules use
   // moduleFileExtensions: [
@@ -90,22 +97,28 @@ const jestConfig = {
   // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
+  // moduleNameMapper: {
+  //   /* Handle CSS imports (with CSS modules)
+  //     https://jestjs.io/docs/webpack#mocking-css-modules */
+  //   "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+
+  //   // Handle CSS imports (without CSS modules)
+  //   "^.+\\.(css|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
+
+  //   /* Handle image imports
+  //     https://jestjs.io/docs/webpack#handling-static-assets */
+  //   "^.+\\.(jpg|jpeg|png|gif|webp|avif|svg)$":
+  //     "<rootDir>/__mocks__/fileMock.js",
+  // },
+
   moduleNameMapper: {
-    /* Handle CSS imports (with CSS modules)
-      https://jestjs.io/docs/webpack#mocking-css-modules */
-    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
-
-    // Handle CSS imports (without CSS modules)
-    "^.+\\.(css|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
-
-    /* Handle image imports
-      https://jestjs.io/docs/webpack#handling-static-assets */
-    "^.+\\.(jpg|jpeg|png|gif|webp|avif|svg)$":
-      "<rootDir>/__mocks__/fileMock.js",
+    "^@(components)/(.*)$": "<rootDir>/$1/$2",
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
+
+  modulePaths: ["<rootDir>"],
 
   // Activates notifications for test results
   // notify: false,
@@ -114,7 +127,7 @@ const jestConfig = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  // preset: undefined,
+  // preset: "ts-jest",
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -138,9 +151,7 @@ const jestConfig = {
   // rootDir: undefined,
 
   // A list of paths to directories that Jest should use to search for files in
-  // roots: [
-  //   "<rootDir>"
-  // ],
+  roots: ["<rootDir>"],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
@@ -158,7 +169,7 @@ const jestConfig = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "jsdom",
+  testEnvironment: "jest-environment-jsdom",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -170,7 +181,7 @@ const jestConfig = {
   testMatch: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: ["/node_modules/"],
+  // testPathIgnorePatterns: ["/node_modules/"],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
@@ -182,13 +193,17 @@ const jestConfig = {
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
-  // transform: undefined,
+  // transform: {
+  //   /* Use babel-jest to transpile tests with the next/babel preset
+  //     https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object */
+  //   "^.+\\.(js|jsx|ts|tsx)$": ["babel-jest", { presets: ["next/babel"] }],
+  // },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  transformIgnorePatterns: [
-    "/node_modules/",
-    "^.+\\.module\\.(css|sass|scss)$",
-  ],
+  // transformIgnorePatterns: [
+  //   "/node_modules/",
+  //   "^.+\\.module\\.(css|sass|scss)$",
+  // ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,
@@ -203,4 +218,4 @@ const jestConfig = {
   // watchman: true,
 };
 
-export default jestConfig;
+export default createJestConfig(jestConfig);
