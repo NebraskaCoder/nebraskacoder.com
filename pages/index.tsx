@@ -24,10 +24,6 @@ const Home: NextPage = () => {
           <code className={styles.code}>pages/index.tsx</code>
         </p>
 
-        <p>
-          <Button>Test Button</Button>
-        </p>
-
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
