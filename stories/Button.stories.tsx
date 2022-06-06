@@ -9,7 +9,7 @@ export default {
   component: Button,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    //backgroundColor: { control: 'color' },
+    onClick: { action: "clicked" },
   },
 } as ComponentMeta<typeof Button>;
 
@@ -20,7 +20,7 @@ export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
   //primary: true,
-  children: "Button",
+  children: "Example Button",
 };
 
 // export const Secondary = Template.bind({});
