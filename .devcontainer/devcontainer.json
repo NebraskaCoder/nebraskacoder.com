@@ -1,0 +1,67 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.236.0/containers/javascript-node-mongo
+// Update the VARIANT arg in docker-compose.yml to pick a Node.js version
+{
+  "name": "NebraskaCoder.com",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      "settings": {
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "workbench.iconTheme": "vscode-icons",
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "vsicons.dontShowNewVersionMessage": true,
+        "git.autofetch": true,
+        "git.confirmSync": false,
+        "files.associations": {
+          "*.env.*": "env",
+          "*.env.development": "env",
+          "*.env.test": "env",
+          "*.env.production": "env",
+          "*.env.local": "env",
+          "*.env.*.local": "env"
+        },
+        "git.suggestSmartCommit": false
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "irongeek.vscode-env",
+        "github.vscode-pull-request-github",
+        "ecmel.vscode-html-css",
+        "zignd.html-css-class-completion",
+        "bradlc.vscode-tailwindcss",
+        "austenc.tailwind-docs",
+        "mongodb.mongodb-vscode",
+        "orta.vscode-jest"
+      ]
+    }
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [27017],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "npm install",
+
+  // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "node",
+  "features": {
+    "kubectl-helm-minikube": "latest",
+    "terraform": "latest",
+    "git": "os-provided",
+    "github-cli": "latest",
+    "homebrew": "latest",
+    "python": "latest"
+  }
+}
