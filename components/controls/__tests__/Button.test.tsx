@@ -2,7 +2,7 @@ import Button from "@components/controls/Button";
 import { render, fireEvent } from "@testing-library/react";
 
 describe("Button Component", () => {
-  test("renders", () => {
+  it("renders", () => {
     const { getByRole } = render(<Button>Test Button</Button>);
 
     const targetButton = getByRole("button", { name: "Test Button" });
@@ -10,7 +10,7 @@ describe("Button Component", () => {
     expect(targetButton).toBeInTheDocument();
   });
 
-  test("handles click event", () => {
+  it("handles click event", () => {
     const mockClickfn = jest.fn();
     const { getByRole } = render(
       <Button onClick={mockClickfn}>Test Button</Button>
