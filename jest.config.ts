@@ -112,7 +112,7 @@ const jestConfig = {
   // },
 
   moduleNameMapper: {
-    "^@(components)/(.*)$": "<rootDir>/$1/$2",
+    "^@(components|styles)/(.*)$": "<rootDir>/$1/$2",
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

@@ -1,3 +1,6 @@
+// @ts-ignore
+
+const path = require("path");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
@@ -6,6 +9,14 @@ module.exports = {
     "../stories/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
+    {
+      name: "@storybook/addon-postcss",
+      options: {
+        postcssLoaderOptions: {
+          implementation: require("postcss"),
+        },
+      },
+    },
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-actions",
@@ -15,13 +26,26 @@ module.exports = {
   core: {
     builder: "@storybook/builder-webpack5",
   },
-  webpackFinal: async (config) => {
+  webpackFinal: async (config: any) => {
     config.resolve.plugins = [
       ...(config.resolve.plugins || []),
       new TsconfigPathsPlugin({
         extensions: config.resolve.extensions,
       }),
     ];
+    config.module.rules.push({
+      test: /\,css&/,
+      use: [
+        {
+          loader: "postcss-loader",
+          options: {
+            ident: "postcss",
+            plugins: [require("tailwindcss"), require("autoprefixer")],
+          },
+        },
+      ],
+      include: path.resolve(__dirname, "../"),
+    });
     return config;
   },
 };

@@ -6,7 +6,11 @@ interface ButtonProps {
 }
 
 const Button = ({ children, onClick }: ButtonProps) => {
-  return <button onClick={onClick}>{children}</button>;
+  return (
+    <button className="bg-cyan-600" onClick={onClick}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;
